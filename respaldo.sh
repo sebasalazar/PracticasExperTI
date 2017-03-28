@@ -4,17 +4,17 @@ date=`date +%Y%m%d%H%M`
 if [ -d $directorio ] ; then
         directorio="/tmp/repo"
 else
-        echo `mkdir $directorio`
+        mkdir $directorio
 fi
 
-echo `git bundle create repo.bundle --all`
+git bundle create repo.bundle --all
 
-echo `mv repo.bundle $directorio`
+mv repo.bundle $directorio
 
-echo `mysqldump -u root -pa+b=c 5f197c7b6ede3ff0 > dbdump.sql`
+mysqldump -u root -pa+b=c 5f197c7b6ede3ff0 > dbdump.sql
 
-echo `mv dbdump.sql $directorio`
+mv dbdump.sql $directorio
 
-echo `tar -cJf repo$date.tar.xz $directorio`
+tar -cJf repo$date.tar.xz $directorio
 
-echo `rm -fr $directorio`
+rm -fr $directorio
